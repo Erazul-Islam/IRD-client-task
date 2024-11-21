@@ -12,7 +12,7 @@ import Settings from "../components/settings/Settings.jsx"
 export default function Home() {
   return (
     <div>
-      <div className="md:flex">
+      <div className="md:flex ">
         <Navigation />
         <Categories />
         {/* <Dua /> */}

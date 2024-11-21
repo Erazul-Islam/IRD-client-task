@@ -12,45 +12,63 @@ import React from 'react';
 
 const AccordionComponent = () => {
 
-  const { data : categories } = useGetCategory()
-  // console.log("category", data)
+  const { data: categories } = useGetCategory()
 
-  const { data: subcategories} = useGetSubCategory()
+  const { data: subcategories } = useGetSubCategory()
 
+  const categoryIcons: Record<string, string> = {
+    "duar_gurutto": "https://i.ibb.co.com/z4KJjzH/duar-gurutto.png",
+    "zikirer_fozilot": "https://i.ibb.co.com/wg5h3ny/zikirer-fozilot.png",
+    "dua_kobuler_somoy": "https://i.ibb.co.com/qB5jPnB/dua-kobuler-somoy.png",
+    "jader_dua_kobul_hoy": "https://i.ibb.co.com/PFW2w12/jader-dua-kobul-hoy.png",
+    "sokal_sondha": "https://i.ibb.co.com/LnJsF0L/sokal-sondha.png",
+    "ghum": "https://i.ibb.co.com/tKmcbDM/ghum.png",
+    "poshak": "https://i.ibb.co.com/rxSP3H5/poshak.png",
+    "bari": "https://i.ibb.co.com/Vv0bn5R/bari.png",
+    "toilet": "https://i.ibb.co.com/NmdQF8g/toilet.png",
+    "azan_ikamot": "https://i.ibb.co.com/LdGZ7zc/azan-ikamot.png",
+  }
 
 
   return (
-    <div className="bg-none mt-6 text-black">
+    <div className="bg-none mt-4 text-black">
       <div
-        className="max-h-[550px]  overflow-y-scroll p-4 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300"
+        className="max-h-[550px] overflow-y-scroll scrollbar-thumb-blue-800 p-4 
+    "
       >
-        {categories?.map((category : Category) => {
-          // Filter subcategories matching the current category's cat_id
+        {categories?.map((category: Category) => {
           const matchingSubcategories = subcategories?.filter(
-            (subcat : Subcategory) => subcat.cat_id === category.cat_id
+            (subcat: Subcategory) => subcat.cat_id === category.cat_id
           );
 
           return (
             <div key={category?.id}>
-              <Accordion selectionMode="single">
+              <Accordion >
                 <AccordionItem
                   key={category?.id}
+                  hideIndicator={true}
                   startContent={
-                    <Avatar
-                      isBordered
-                      color="primary"
-                      radius="lg"
-                      src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-                    />
+                    <div className="text-[#393939]  flex">
+                      <img className="w-[50px] bg-[#CFE0E5] rounded-md" src={categoryIcons[category?.cat_icon]} alt={category?.cat_icon} />
+                    </div>
                   }
-                  subtitle={`Subcategory : ${matchingSubcategories?.length || 0}`}
-                  title={<span className="text-[#393939] text-sm font-semibold">{category.cat_name_en}</span>}
-                  
+                  // subtitle={<span className="text-xs mt-0">{`Subcategory : ${matchingSubcategories?.length || 0}`}</span>}
+                  title={<div className="text-[#393939] flex justify-between text-sm">
+                    <span className="text-[#393939] text-sm font-semibold">{category?.cat_name_en} <br />
+                      <span className="text-xs text-[#7E7E7E] mt-0">{`Subcategory : ${matchingSubcategories?.length || 0}`}</span>
+                    </span>
+                    <div>
+                      <h1>{category?.no_of_dua}</h1>
+                      Duas
+                    </div>
+                  </div>}
+
                 >
                   <div className="bg-none pl-4">
-                    {matchingSubcategories?.map((subcat : Subcategory) => (
-                      <div key={subcat?.id} className="mb-2 gap-4 text-sm text-[#373737]">
+                    {matchingSubcategories?.map((subcat: Subcategory) => (
+                      <div key={subcat?.id} className="mb-2 mt-5 text-sm text-[#373737]">
                         {subcat?.subcat_name_en}
+
                       </div>
                     ))}
                   </div>

@@ -12,8 +12,8 @@ import { fontSans } from "@/config/fonts";
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    default: 'Dua & Ruqyah',
+    template: `%s - ${'Dua & Ruqyah'}`,
   },
   description: siteConfig.description,
   icons: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
+    // { media: "(prefers-color-scheme: light)", color: "#E8F0F5" },
     // { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
 };
@@ -44,7 +44,7 @@ export default function RootLayout({
       >
  
           <Providers >
-            <div className="bg-white h-screen">
+            <div className="bg-[#E8F0F5] h-screen">
               <main className="">
                 {children}
               </main>
