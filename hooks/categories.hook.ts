@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 
-import { getAllCategory, getAllDua, getAllSubCategory } from "@/services/getData";
+import { getAllCategory, getAllDua, getAllSubCategory, getDaynamicDua } from "@/services/getData";
 
 
 
@@ -22,5 +22,11 @@ export const useGetDua = () => {
     return useQuery({
         queryKey : ['DUa'],
         queryFn : async () => await getAllDua()
+    })
+};
+export const useGetDaynamicDua = (id:string) => {
+    return useQuery({
+        queryKey : ['Daynamic'],
+        queryFn : async () => await getDaynamicDua(id)
     })
 };

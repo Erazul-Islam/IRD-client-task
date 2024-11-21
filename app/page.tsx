@@ -15,7 +15,6 @@ export default function Home() {
       <div className="md:flex ">
         <Navigation />
         <Categories />
-        {/* <Dua /> */}
         <Settings />
       </div>
     </div>

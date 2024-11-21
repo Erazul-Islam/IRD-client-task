@@ -3,7 +3,8 @@
 /* eslint-disable prettier/prettier */
 import { useGetCategory, useGetSubCategory } from "@/hooks/categories.hook";
 import { Category, Subcategory } from "@/types";
-import { Accordion, AccordionItem, Avatar } from "@nextui-org/react";
+import { Accordion, AccordionItem,  } from "@nextui-org/react";
+// import { useRouter } from "next/router";
 
 import React from 'react';
 
@@ -15,6 +16,12 @@ const AccordionComponent = () => {
   const { data: categories } = useGetCategory()
 
   const { data: subcategories } = useGetSubCategory()
+
+  // const router = useRouter()
+
+  // const handleCategoryClick = (id: string) => {
+  //   router.push(`/category/${id}`);
+  // };
 
   const categoryIcons: Record<string, string> = {
     "duar_gurutto": "https://i.ibb.co.com/z4KJjzH/duar-gurutto.png",
@@ -53,7 +60,7 @@ const AccordionComponent = () => {
                     </div>
                   }
                   // subtitle={<span className="text-xs mt-0">{`Subcategory : ${matchingSubcategories?.length || 0}`}</span>}
-                  title={<div className="text-[#393939] flex justify-between text-sm">
+                  title={<div  className="text-[#393939] flex justify-between text-sm" >
                     <span className="text-[#393939] text-sm font-semibold">{category?.cat_name_en} <br />
                       <span className="text-xs text-[#7E7E7E] mt-0">{`Subcategory : ${matchingSubcategories?.length || 0}`}</span>
                     </span>

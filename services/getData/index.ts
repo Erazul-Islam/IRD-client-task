@@ -38,3 +38,14 @@ export const getAllDua = async () => {
         throw new Error("yaap")
     }
 }
+
+export const getDaynamicDua = async (id:string) => {
+    try {
+        const { data } = await axiosInstance.get(`/dua${id}`)
+
+        return data
+    }
+    catch (err) {
+        throw new Error("yaap")
+    }
+}
