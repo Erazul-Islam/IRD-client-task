@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import "@/styles/globals.css";
+
+import '../styles/globals.css'
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
 
@@ -7,6 +8,7 @@ import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
+
 
 export const metadata: Metadata = {
   title: {
@@ -40,13 +42,15 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        <Providers >
-          <div className="bg-white h-screen">
-            <main className="">
-              {children}
-            </main>
-          </div>
-        </Providers>
+ 
+          <Providers >
+            <div className="bg-white h-screen">
+              <main className="">
+                {children}
+              </main>
+            </div>
+          </Providers>
+
       </body>
     </html>
   );

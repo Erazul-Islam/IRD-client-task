@@ -1,9 +1,12 @@
+/* eslint-disable import/order */
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import { IoMdSearch } from "react-icons/io";
+import AccordionComponent from './Accordion';
 
 
 const Categories = () => {
+
     return (
         <div className='md:ml-14'>
             <div className='mt-12 '>
@@ -21,7 +24,9 @@ const Categories = () => {
                             size={25}
                         />
                     </div>
-
+                    <div>
+                        <AccordionComponent />
+                    </div>
                 </div>
             </div>
         </div>

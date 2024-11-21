@@ -1,9 +1,12 @@
 /* eslint-disable prettier/prettier */
 
 // eslint-disable-next-line import/order
-import Dua from "@/components/dua/Dua";
+
+"use client"
+
 import Navigation from "../components/Navigation.jsx"
 import Categories from "../components/categories/Categories.jsx"
+
 import Settings from "../components/settings/Settings.jsx"
 
 export default function Home() {
@@ -12,7 +15,7 @@ export default function Home() {
       <div className="md:flex">
         <Navigation />
         <Categories />
-        <Dua />
+        {/* <Dua /> */}
         <Settings />
       </div>
     </div>
