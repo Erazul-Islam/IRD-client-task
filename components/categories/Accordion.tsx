@@ -14,7 +14,7 @@ interface AccordionProps {
 }
 
 
-const AccordionComponent : React.FC<AccordionProps> = ({ handleCategoryClick }) => {
+const AccordionComponent: React.FC<AccordionProps> = ({ handleCategoryClick }) => {
 
   const { data: categories } = useGetCategory()
 
@@ -80,7 +80,6 @@ const AccordionComponent : React.FC<AccordionProps> = ({ handleCategoryClick }) 
           );
         })}
       </div>
-      {/* {selectedCategoryId && <DaynamicData selectedCategoryId={selectedCategoryId} />} */}
     </div>
   );
 };

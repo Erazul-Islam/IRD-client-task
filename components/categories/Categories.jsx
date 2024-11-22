@@ -11,8 +11,10 @@ const Categories = () => {
     const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
     const handleCategoryClick = (id) => {
-        setSelectedCategoryId(id); 
+        setSelectedCategoryId(id);
     };
+
+    
 
     return (
         <div className='md:ml-14 flex '>
