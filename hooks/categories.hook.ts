@@ -24,9 +24,9 @@ export const useGetDua = () => {
         queryFn : async () => await getAllDua()
     })
 };
-export const useGetDaynamicDua = (id:string) => {
+export const useGetDaynamicDua = (id:number) => {
     return useQuery({
-        queryKey : ['Daynamic'],
+        queryKey : ['Daynamic',id],
         queryFn : async () => await getDaynamicDua(id)
     })
 };

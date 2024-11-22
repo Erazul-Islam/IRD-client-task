@@ -39,9 +39,9 @@ export const getAllDua = async () => {
     }
 }
 
-export const getDaynamicDua = async (id:string) => {
+export const getDaynamicDua = async (id:number) => {
     try {
-        const { data } = await axiosInstance.get(`/dua${id}`)
+        const { data } = await axiosInstance.get(`/${id}`)
 
         return data
     }

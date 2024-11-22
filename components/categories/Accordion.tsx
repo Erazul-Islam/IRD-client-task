@@ -1,27 +1,24 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable import/order */
 /* eslint-disable prettier/prettier */
+
 import { useGetCategory, useGetSubCategory } from "@/hooks/categories.hook";
 import { Category, Subcategory } from "@/types";
-import { Accordion, AccordionItem,  } from "@nextui-org/react";
-// import { useRouter } from "next/router";
+import { Accordion, AccordionItem, } from "@nextui-org/react";
+
 
 import React from 'react';
 
+interface AccordionProps {
+  handleCategoryClick: (id: number) => void;
+}
 
 
-
-const AccordionComponent = () => {
+const AccordionComponent : React.FC<AccordionProps> = ({ handleCategoryClick }) => {
 
   const { data: categories } = useGetCategory()
 
   const { data: subcategories } = useGetSubCategory()
-
-  // const router = useRouter()
-
-  // const handleCategoryClick = (id: string) => {
-  //   router.push(`/category/${id}`);
-  // };
 
   const categoryIcons: Record<string, string> = {
     "duar_gurutto": "https://i.ibb.co.com/z4KJjzH/duar-gurutto.png",
@@ -36,12 +33,10 @@ const AccordionComponent = () => {
     "azan_ikamot": "https://i.ibb.co.com/LdGZ7zc/azan-ikamot.png",
   }
 
-
   return (
     <div className="bg-none mt-4 text-black">
       <div
-        className="max-h-[550px] overflow-y-scroll scrollbar-thumb-blue-800 p-4 
-    "
+        className="max-h-[550px] overflow-y-scroll scrollbar-thumb-blue-800 p-4"
       >
         {categories?.map((category: Category) => {
           const matchingSubcategories = subcategories?.filter(
@@ -55,27 +50,27 @@ const AccordionComponent = () => {
                   key={category?.id}
                   hideIndicator={true}
                   startContent={
-                    <div className="text-[#393939]  flex">
+                    <div className="text-[#393939]">
                       <img className="w-[50px] bg-[#CFE0E5] rounded-md" src={categoryIcons[category?.cat_icon]} alt={category?.cat_icon} />
                     </div>
                   }
-                  // subtitle={<span className="text-xs mt-0">{`Subcategory : ${matchingSubcategories?.length || 0}`}</span>}
-                  title={<div  className="text-[#393939] flex justify-between text-sm" >
-                    <span className="text-[#393939] text-sm font-semibold">{category?.cat_name_en} <br />
-                      <span className="text-xs text-[#7E7E7E] mt-0">{`Subcategory : ${matchingSubcategories?.length || 0}`}</span>
-                    </span>
-                    <div>
-                      <h1>{category?.no_of_dua}</h1>
-                      Duas
+                  title={<button onClick={() => handleCategoryClick(category.cat_id)}>
+                    <div className="text-[#393939] flex justify-between text-sm" >
+                      <span className="text-[#393939] text-left text-sm font-semibold">{category?.cat_name_en} <br />
+                        <span className="text-xs text-[#7E7E7E] ml-0 mt-0">{`Subcategory : ${matchingSubcategories?.length || 0}`}</span>
+                      </span>
+                      <div className="">
+                        <h1>{category?.no_of_dua}</h1>
+                        Duas
+                      </div>
                     </div>
-                  </div>}
+                  </button>}
 
                 >
                   <div className="bg-none pl-4">
                     {matchingSubcategories?.map((subcat: Subcategory) => (
                       <div key={subcat?.id} className="mb-2 mt-5 text-sm text-[#373737]">
                         {subcat?.subcat_name_en}
-
                       </div>
                     ))}
                   </div>
@@ -85,6 +80,7 @@ const AccordionComponent = () => {
           );
         })}
       </div>
+      {/* {selectedCategoryId && <DaynamicData selectedCategoryId={selectedCategoryId} />} */}
     </div>
   );
 };
